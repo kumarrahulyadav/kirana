@@ -1,0 +1,644 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyStartup IT Company</title>
+    <style>
+        :root {
+            --primary: #0b63d6;
+            --accent: #1abc9c;
+            --card: #fff;
+            --muted: #64748b;
+            --star: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins",Arial,sans-serif
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            border-radius: 8px
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05)
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--primary)
+        }
+
+        .main-menu {
+            display: flex;
+            gap: 24px;
+            list-style: none
+        }
+
+            .main-menu li a {
+                font-weight: 600;
+                color: #1e293b;
+                transition: .3s
+            }
+
+                .main-menu li a:hover {
+                    color: var(--primary)
+                }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 22px
+        }
+        @@media(max - width:768px) {
+            .main-menu
+
+        {
+            display: none
+        }
+
+        .menu-toggle {
+            display: block
+        }
+
+        }
+
+        /* HERO SLIDER */
+        .hero {
+            min-height: 72vh;
+            position: relative;
+            overflow: hidden;
+            color: #fff
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center
+        }
+
+            .hero-slide.active {
+                opacity: 1
+            }
+
+        .hero .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,rgba(6,30,77,0.55),rgba(6,30,77,0.35))
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 20px;
+            text-align: center
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 12px
+        }
+
+        .lead {
+            color: rgba(255,255,255,0.9);
+            max-width: 720px;
+            margin: auto
+        }
+
+        .hero .actions {
+            margin-top: 18px;
+            display: flex;
+            gap: 12px;
+            justify-content: center
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            transition: .3s
+        }
+
+            .btn:hover {
+                background: #0947a8
+            }
+
+        /* SECTION */
+        .section {
+            padding: 70px 20px
+        }
+
+            .section h2 {
+                text-align: center;
+                margin-bottom: 24px;
+                font-size: 28px;
+                color: #0f172a
+            }
+
+        /* Services */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px
+        }
+
+        .card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(11,99,214,0.06);
+            text-align: center;
+            transition: .3s
+        }
+
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.08)
+            }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background: linear-gradient(135deg,var(--primary),var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            margin: 0 auto 10px
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary);
+            font-weight: 600
+        }
+        @@media(max - width:1000px) {
+            .card-grid
+
+        {
+            grid-template-columns: repeat(2,1fr)
+        }
+
+        }
+        @@media(max - width:700px) {
+            .card-grid
+
+        {
+            grid-template-columns: 1fr
+        }
+
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px
+        }
+
+        .member {
+            background: var(--card);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05)
+        }
+
+            .member img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                margin-bottom: 10px
+            }
+
+            .member h4 {
+                margin: 6px 0 2px
+            }
+
+            .member p {
+                font-size: 14px;
+                margin: 2px 0
+            }
+
+            .member .small {
+                color: var(--muted);
+                font-size: 13px
+            }
+        @@media(max - width:1000px) {
+            .team-grid
+
+        {
+            grid-template-columns: repeat(2,1fr)
+        }
+
+        }
+        @@media(max - width:600px) {
+            .team-grid
+
+        {
+            grid-template-columns: 1fr
+        }
+
+        }
+
+        /* Blog */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px
+        }
+
+        .post img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 8px
+        }
+
+        .post {
+            background: #fff;
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05)
+        }
+        @@media(max - width:800px) {
+            .blog-grid
+
+        {
+            grid-template-columns: 1fr
+        }
+
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px
+        }
+
+        .review {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            text-align: center
+        }
+
+            .review img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 0 auto 10px
+            }
+
+        .stars {
+            color: var(--star);
+            margin: 6px 0
+        }
+        @@media(max - width:900px) {
+            .reviews-grid
+
+        {
+            grid-template-columns: 1fr
+        }
+
+        }
+
+        /* Enquiry */
+        .enquiry-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px
+        }
+
+        .form {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(11,99,214,0.04)
+        }
+
+            .form input, .form textarea {
+                width: 100%;
+                padding: 12px;
+                border-radius: 8px;
+                border: 1px solid #e7eefc;
+                margin-top: 8px
+            }
+
+        .info-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05)
+        }
+
+        .socials a {
+            margin-right: 10px;
+            font-size: 20px;
+            color: var(--primary)
+        }
+        @@media(max - width:900px) {
+            .enquiry-wrapper
+
+        {
+            grid-template-columns: 1fr
+        }
+
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #fff;
+            padding: 50px 20px
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px
+        }
+
+        .footer h4 {
+            margin-bottom: 10px
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0
+        }
+
+            .footer ul li {
+                margin-bottom: 8px
+            }
+
+                .footer ul li a {
+                    color: #cbd5e1;
+                    font-size: 14px
+                }
+
+                    .footer ul li a:hover {
+                        color: #fff
+                    }
+
+        .footer .bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #94a3b8
+        }
+        @@media(max - width:900px) {
+            .footer-grid
+
+        {
+            grid-template-columns: 1fr 1fr
+        }
+
+        }
+        @@media(max - width:600px) {
+            .footer-grid
+
+        {
+            grid-template-columns: 1fr
+        }
+
+        }
+
+        /* Effects */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: all .6s cubic-bezier(.2,.9,.2,1)
+        }
+
+        .in-view {
+            opacity: 1;
+            transform: none
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+
+  <nav>
+    <div class="logo">
+        <img src="images/Logo.png" alt="RYDigital Logo" style="height: 50px;"><h4>RyDigital</h4>
+    </div>
+    <ul class="main-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#enquiry">Get Enquiry</a></li>
+    </ul>
+    <div class="menu-toggle" onclick="toggleMobile()">☰</div>
+</nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="overlay"></div>
+        <div class="content fade-up">
+            <h1>Building Smart Digital Solutions</h1>
+            <p class="lead">We empower startups & enterprises with innovative web, mobile, cloud and consulting services.</p>
+            <div class="actions">
+                <a href="#services" class="btn">Our Services</a>
+                <a href="#enquiry" class="btn" style="background:var(--accent)">Get Enquiry</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+        <h2>Our Services</h2>
+        <div class="card-grid fade-up">
+            <div class="card"><div class="service-icon">💻</div><h3>Web Development</h3><p>Custom websites & apps.</p><a href="#"></a></div>
+            <div class="card"><div class="service-icon">📱</div><h3>Mobile Apps</h3><p>Native & cross-platform apps.</p><a href="#"></a></div>
+            <div class="card"><div class="service-icon">☁️</div><h3>Cloud Solutions</h3><p>Cloud migration & DevOps.</p><a href="#"></a></div>
+            <div class="card"><div class="service-icon">📊</div><h3>CRM & ERP</h3><p>Tailored enterprise solutions.</p><a href="#"></a></div>
+            <div class="card"><div class="service-icon">🛠</div><h3>Consulting</h3><p>Expert IT consulting.</p><a href="#"></a></div>
+            <div class="card"><div class="service-icon">🔒</div><h3>Cybersecurity</h3><p>Protect your business.</p><a href="#"></a></div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <h2>About Us</h2>
+        <p class="center fade-up" style="text-align:center;margin-bottom:30px">We are a passionate team helping businesses build world-class software solutions.</p>
+        <div class="team-grid fade-up">
+            <div class="member"><img src="images/Rahul.jpeg" alt="Rahul"><h4>Rahul Yadav</h4><p>CEO</p><p class="small">📞 +91-9876543210<br>📧 rahul@example.com</p></div>
+            <div class="member"><img src="images/Raju.jpeg" alt="Raju"><h4>Raju Yadav</h4><p>Software Developer</p><p class="small">📞 +91-9123456789<br>📧 raju@example.com</p></div>
+            <div class="member"><img src="images/Deepak.jpeg" alt="Deepak"><h4>Deepak Yadav</h4><p>UI/UX Developer</p><p class="small">📞 +91-9988776655<br>📧 deepak@example.com</p></div>
+            <div class="member"><img src="images/Pratik.jpeg" alt="Pratik"><h4>Pratik Raj</h4><p>Marketing</p><p class="small">📞 +91-9876123456<br>📧 pratik@example.com</p></div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section" id="blog">
+        <h2>Latest Blog</h2>
+        <div class="blog-grid fade-up">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop" alt="Technology">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop" alt="Cloud">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop" alt="Cloud">
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section" id="reviews">
+        <h2>Client Reviews</h2>
+        <div class="reviews-grid fade-up">
+            <div class="review">
+                <img src="images/Vivek.jpeg" alt="Client 1">
+                <h4>Vivek Yadav</h4>
+                <p>Service: WebSite Development</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"MyStartup delivered our e-commerce site ahead of schedule. Amazing support!"</p>
+            </div>
+            <div class="review">
+                <img src="images/Rishi.jpeg" alt="Client 2">
+                <h4>RishiKesh Yadav</h4>
+                <p>Service: CRM Development</p>
+                <div class="stars">⭐⭐⭐⭐</div>
+                <p>"Great CRM Development team, very responsive and creative."</p>
+            </div>
+            <div class="review">
+                <img src="images/Kundan.jpeg" alt="Client 3">
+                <h4>Creater Kundan</h4>
+                <p>Service: ERP Development</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Their ERP Development services saved us costs and improved performance."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENQUIRY -->
+    <section class="section" id="enquiry">
+        <h2>Get Enquiry</h2>
+        <div class="enquiry-wrapper fade-up">
+            <form class="form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Phone">
+                <textarea rows="4" placeholder="Message"></textarea>
+                <button type="submit" class="btn" style="margin-top:12px">Send Enquiry</button>
+            </form>
+            <div class="info-card">
+                <h3>Contact Information</h3>
+                <p><b>Name:</b> Rahul Yadav (CEO)</p>
+                <p><b>Mobile:</b> +91-9876543210</p>
+                <p><b>Email:</b> rahul@example.com</p>
+                <p><b>Address:</b> New Delhi, India</p>
+                @* <div class="socials" style="margin-top:10px">
+                    <a href="#">📷</a>
+                    <a href="#">👍</a>
+                    <a href="#">💼</a>
+                </div> *@
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4>Services</h4>
+                <ul><li><a href="#">Web Development</a></li><li><a href="#">Mobile Apps</a></li><li><a href="#">Cloud Solutions</a></li></ul>
+            </div>
+            <div>
+                <h4>Technologies</h4>
+                <ul><li><a href="#">.NET</a></li><li><a href="#">Java</a></li><li><a href="#">React / Angular</a></li></ul>
+            </div>
+            <div>
+                <h4>Industries</h4>
+                <ul><li><a href="#">Healthcare</a></li><li><a href="#">Finance</a></li><li><a href="#">Retail</a></li></ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <ul><li><a href="#about">About Us</a></li><li><a href="#blog">Blog</a></li><li><a href="#enquiry">Contact</a></li></ul>
+            </div>
+        </div>
+        <div class="bottom">© 2025 MyStartup IT Solutions. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        (function(){
+          const obs = new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('in-view')})
+          },{threshold:0.12});
+          document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+        })();
+
+        // Mobile nav toggle
+        function toggleMobile(){
+          const m=document.querySelector('.main-menu');
+          if(!m) return;
+          if(m.style.display==='flex'){m.style.display='none';}
+          else{
+            m.style.display='flex';
+            m.style.flexDirection='column';
+            m.style.position='absolute';
+            m.style.right='20px';
+            m.style.top='64px';
+            m.style.background='#fff';
+            m.style.padding='12px';
+            m.style.borderRadius='8px';
+            m.style.boxShadow='0 8px 30px rgba(11,99,214,0.06)';
+          }
+        }
+
+        // Hero slider
+        let slideIndex=0;
+        const slides=document.querySelectorAll('.hero-slide');
+        function showSlides(){
+          slides.forEach((s,i)=>s.classList.toggle('active',i===slideIndex));
+          slideIndex=(slideIndex+1)%slides.length;
+        }
+        setInterval(showSlides,5000);
+    </script>
+</body>
+</html>
